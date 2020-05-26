@@ -26,7 +26,7 @@ const AddCommentView = ({
   const handleOk = async (e) => {
     const { suggestion } = e;
     suggestion.menu_id = idMenu;
-    const { menu_id } = submitComment(suggestion);
+    const { menu_id } = await submitComment(suggestion);
     if (menu_id) {
       notification.success({
         message: 'Gracias por tu calificacion',

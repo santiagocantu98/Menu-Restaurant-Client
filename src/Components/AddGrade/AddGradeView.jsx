@@ -33,7 +33,7 @@ const AddGradeView = ({
   const handleOk = async (e) => {
     const { calification } = e
     calification.menu_id = idMenu
-    const { menu_id } = submitGrade(calification);
+    const { menu_id } = await submitGrade(calification);
     if (menu_id) {
       notification.success({
         message: 'Gracias por tu calificacion',

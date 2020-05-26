@@ -5,7 +5,7 @@ import { Carousel } from 'antd';
 const ProductMedia = ({ media }) => {
   return (
     <Carousel>
-      {media.length > 0 ? media.map((mediaItem) => {
+      {(media && media.length > 0) ? media.map((mediaItem) => {
         if (mediaItem.type === 'video') {
           return (
             <div>

@@ -151,7 +151,7 @@ class MenuView extends Component {
     }
   };
 
-  submitComment = (data) => fetch(`http://localhost:3001/api/suggestions`, {
+  submitComment = async (data) => fetch(`http://localhost:3001/api/suggestions`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -162,7 +162,7 @@ class MenuView extends Component {
     .then((response) => ({ response }))
     .catch((error) => ({ error }));
 
-  submitGrade = (data) => fetch(`http://localhost:3001/api/califications`, {
+  submitGrade = async (data) => fetch(`http://localhost:3001/api/califications`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
