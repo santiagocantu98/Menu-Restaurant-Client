@@ -4,14 +4,14 @@ import { Col, Row, Rate } from 'antd';
 import ProductMedia from '../ProductMedia';
 
 const ProductView = ({ product, position, text_color, product_color_inverse, rating_color, }) => {
-  const { name, description, price, rating, media } = product;
+  const { name, description, price, rating, media_files } = product;
   return (
     <Row type="flex" style={position && {
       backgroundColor: product_color_inverse
     }} className={`product ${position && 'right'}`} justify="space-between">
       {!position ? (<>
         <Col xs={24} md={12}>
-          <ProductMedia media={media} />
+          <ProductMedia media={media_files} />
         </Col>
         <Col className="product-description" xs={24} md={12}>
           <h2
@@ -53,7 +53,7 @@ const ProductView = ({ product, position, text_color, product_color_inverse, rat
               >${price}</h3>
             </Col>
             <Col xs={24} md={12}>
-              <ProductMedia media={media} />
+              <ProductMedia media={media_files} />
             </Col>
           </>
         )}
