@@ -37,7 +37,7 @@
 .product-img {
   width: 100%;
   object-fit: cover;
-  height: 250px;
+  height: auto;
   float: left;
   margin: 3px;
   padding: 3px;
@@ -48,4 +48,8 @@
   border: inherit;
   font-size: 30px;
   margin-right: 10px;
+}
+
+.ant-carousel .slick-dots li button {
+  height: 10px;
 }

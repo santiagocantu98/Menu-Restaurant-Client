@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Tabs } from 'antd';
-import axios from 'axios';
+import { Tabs, Row, Col, Button } from 'antd';
 
-import Section from '../../Components/Sections'
+import Section from '../../Components/Sections';
+import AddComment from '../../Components/AddComment';
+import AddGrade from '../../Components/AddGrade';
 
 import './styles.css';
 
@@ -21,6 +22,8 @@ class MenuView extends Component {
         rating_color: null
       },
       tab: 0,
+      addCommentVisible: false,
+      addGradeVisible: false,
     };
   }
 
@@ -30,82 +33,99 @@ class MenuView extends Component {
 
   getMenu = async () => {
     const { id } = this.props.match.params
-    const { menu } = axios.get(`http:localhost:3001/menu/${id}`)
-    if (menu) {
-      this.setState({ menu });
-    } else {
-      this.setState({
-        menu: {
-          title: 'Los Castores: Platillos fuertes',
-          description: 'Extensa variedad de platillos fuertes ',
-          image_url: '123.com',
-          menu_color: '#dc1c1c',
-          text_color: '#ffffff',
-          rating_color: '#d1c340',
-          admin_user_id: 2,
-          sections: [
-            {
-              title: 'Hamburguesas de Pollo',
-              description: 'Hamburguesas hechas con carne de pollo',
-              image_url: '123.com',
-              menu_id: 1,
-              page_number: '1.0',
-              products: [
-                {
-                  name: 'Boneless Burger',
-                  description: 'Hamburguesa con pechuga de pollo banada en salsa boneless',
-                  price: '120.0',
-                  rating: '5.0',
-                  image_url: '123.com',
-                  video_url: '123.com',
-                  section_id: 1,
-                  position: '2.0',
-                },
-                {
-                  name: 'Hamburguesa King',
-                  description: 'Deliciosa hamburguesa de pollo con aros de cebolla y salsa buffalo',
-                  price: '120.0',
-                  rating: '4.0',
-                  image_url: '123.com',
-                  video_url: '123.com',
-                  section_id: 1,
-                  position: '1.0',
-                },
-              ],
-            },
-            {
-              title: 'Caldos ',
-              description: 'Caldos de la casa',
-              image_url: '123.com',
-              menu_id: 1,
-              page_number: '2.0',
-              products: [
-                {
-                  name: 'Caldo Tlalpeno',
-                  description: 'Nuestro tradicional y mas delicioso, lleva aguacate, queso',
-                  price: '100.0',
-                  rating: '4.0',
-                  image_url: '123.com',
-                  video_url: '123.com',
-                  section_id: 2,
-                  position: '2.0',
-                },
-                {
-                  name: 'Caldo de Res',
-                  description: 'Caldo inventado por la casa, lleva res y verduras',
-                  price: '100.0',
-                  rating: '5.0',
-                  image_url: '123.com',
-                  video_url: '123.com',
-                  section_id: 2,
-                  position: '1.0',
-                },
-              ],
-            },
-          ],
-        }
-      })
-    }
+    fetch(`http://localhost:3001/api/menus/${id}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(response => response.json())
+      .then(menu => this.setState({ menu })).catch(() => {
+        // this.setState({
+        //   menu: {
+        //     title: 'Los Castores: Platillos fuertes',
+        //     description: 'Extensa variedad de platillos fuertes ',
+        //     image_url: '123.com',
+        //     menu_color: '#dc1c1c',
+        //     text_color: '#ffffff',
+        //     rating_color: '#d1c340',
+        //     admin_user_id: 2,
+        //     waiters: [
+        //       {
+        //         id: 1,
+        //         name: 'Santiago',
+        //         last_name: 'Cantu'
+        //       },
+        //       {
+        //         id: 2,
+        //         name: 'Juan',
+        //         last_name: 'Cantu'
+        //       },
+        //       {
+        //         id: 3,
+        //         name: 'Rafael',
+        //         last_name: 'Cantu'
+        //       },
+        //     ],
+        //     sections: [
+        //       {
+        //         title: 'Hamburguesas de Pollo',
+        //         description: 'Hamburguesas hechas con carne de pollo',
+        //         image_url: '123.com',
+        //         menu_id: 1,
+        //         page_number: '1.0',
+        //         products: [
+        //           {
+        //             name: 'Boneless Burger',
+        //             description: 'Hamburguesa con pechuga de pollo banada en salsa boneless',
+        //             price: '120.0',
+        //             rating: '5.0',
+        //             media: [
+        //               {
+        //                 type: 'video',
+        //                 url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
+        //               },
+        //               {
+        //                 type: 'image',
+        //                 url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
+        //               },
+        //             ],
+        //             section_id: 1,
+        //             position: '2.0',
+        //           },
+        //           {
+        //             name: 'Hamburguesa King',
+        //             description: 'Deliciosa hamburguesa de pollo con aros de cebolla y salsa buffalo',
+        //             price: '120.0',
+        //             rating: '4.0',
+        //             media: [
+        //               {
+        //                 type: 'video',
+        //                 url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
+        //               },
+        //               {
+        //                 type: 'image',
+        //                 url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
+        //               },
+        //             ],
+        //             section_id: 1,
+        //             position: '1.0',
+        //           },
+        //         ],
+        //       },
+        //       {
+        //         title: 'Caldos ',
+        //         description: 'Caldos de la casa',
+        //         image_url: '123.com',
+        //         menu_id: 1,
+        //         page_number: '2.0',
+        //         products: [],
+        //       },
+        //     ],
+        //   }
+        // })
+      });
   }
 
   hexToRgbA(hex, opacity) {
@@ -121,35 +141,118 @@ class MenuView extends Component {
     return hex;
   }
 
+  sortSections = (a, b) => {
+    if (Number(a.page_number) > Number(b.page_number)) {
+      return 1;
+    } else if (Number(a.page_number) < Number(b.page_number)) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
+
+  submitComment = (data) => fetch(`http://localhost:3001/api/suggestions`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  }).then(response => response.json())
+    .then((response) => ({ response }))
+    .catch((error) => ({ error }));
+
+  submitGrade = (data) => fetch(`http://localhost:3001/api/califications`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  }).then(response => response.json())
+    .then((response) => ({ response }))
+    .catch((error) => ({ error }));
+
   render() {
-    console.log(this.state)
-    const { menu: {
-      title,
-      sections,
-      menu_color,
-      text_color,
-      rating_color,
-    }, tab } = this.state;
+    const { id: idMenu } = this.props.match.params;
+    const {
+      menu: {
+        title,
+        sections,
+        menu_color,
+        text_color,
+        rating_color,
+        waiters,
+      },
+      tab,
+      addCommentVisible,
+      addGradeVisible,
+    } = this.state;
     const menuColor = this.hexToRgbA(menu_color, 0.5);
     const product_color_inverse = this.hexToRgbA(menu_color, 1);
+
     return (
       <div className="menu-container" style={{
         paddingTop: '2%',
         backgroundColor: menuColor,
+        height: '100vh',
       }} >
-        <h1
-          className="section"
-          style={{
-            color: text_color,
-          }}
-        >{title}</h1>
+        <AddComment
+          visible={addCommentVisible}
+          handleCancel={() => this.setState({ addCommentVisible: false })}
+          idMenu={idMenu}
+          submitComment={this.submitComment}
+        />
+        <AddGrade
+          visible={addGradeVisible}
+          handleCancel={() => this.setState({ addGradeVisible: false })}
+          idMenu={idMenu}
+          waiters={waiters}
+          submitGrade={this.submitGrade}
+        />
+        <Row type="flex" justify="space-between">
+          <Col span={12}>
+            <h1
+              className="section"
+              style={{
+                color: text_color,
+              }}
+            >{title}</h1>
+          </Col>
+          <Col span={6}>
+            <div style={{ padding: 5 }}>
+              <Button
+                color={text_color}
+                style={{ width: '80%' }}
+                onClick={() => this.setState({ addCommentVisible: true })}
+                ghost
+              >
+                Sugerencias y comentarios
+              </Button>
+            </div>
+            <div style={{ padding: 5 }}>
+              <Button
+                color={text_color}
+                style={{ width: '80%' }}
+                ghost
+                onClick={() => this.setState({ addGradeVisible: true })}
+              >
+                Calificar Servicio
+              </Button>
+            </div>
+          </Col>
+        </Row>
         <Tabs style={{
           color: text_color
         }} defaultActiveKey={tab} onChange={(e) => this.setState({ tab: e })}>
-          {sections.map((section, i) => {
+          {sections.sort(this.sortSections).map((section, i) => {
             return (
               <TabPane tab={section.title} key={i}>
-                <Section rating_color={rating_color} product_color_inverse={product_color_inverse} text_color={text_color} section={section} />
+                <Section
+                  rating_color={rating_color}
+                  product_color_inverse={product_color_inverse}
+                  text_color={text_color} section={section}
+                />
               </TabPane>
             )
           })}
