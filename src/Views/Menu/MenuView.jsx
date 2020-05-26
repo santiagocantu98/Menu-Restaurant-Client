@@ -159,7 +159,7 @@ class MenuView extends Component {
     },
     body: JSON.stringify(data)
   }).then(response => response.json())
-    .then((response) => ({ response }))
+    .then(({ menu_id }) => ({ menu_id }))
     .catch((error) => ({ error }));
 
   submitGrade = async (data) => fetch(`http://localhost:3001/api/califications`, {
@@ -170,7 +170,7 @@ class MenuView extends Component {
     },
     body: JSON.stringify(data)
   }).then(response => response.json())
-    .then((response) => ({ response }))
+    .then(({ menu_id }) => ({ menu_id }))
     .catch((error) => ({ error }));
 
   render() {
