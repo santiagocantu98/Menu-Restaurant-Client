@@ -33,78 +33,79 @@ class MenuView extends Component {
     const { menu } = axios.get(`http:localhost:3001/menu/${id}`)
     if (menu) {
       this.setState({ menu });
+    } else {
+      this.setState({
+        menu: {
+          title: 'Los Castores: Platillos fuertes',
+          description: 'Extensa variedad de platillos fuertes ',
+          image_url: '123.com',
+          menu_color: '#dc1c1c',
+          text_color: '#ffffff',
+          rating_color: '#d1c340',
+          admin_user_id: 2,
+          sections: [
+            {
+              title: 'Hamburguesas de Pollo',
+              description: 'Hamburguesas hechas con carne de pollo',
+              image_url: '123.com',
+              menu_id: 1,
+              page_number: '1.0',
+              products: [
+                {
+                  name: 'Boneless Burger',
+                  description: 'Hamburguesa con pechuga de pollo banada en salsa boneless',
+                  price: '120.0',
+                  rating: '5.0',
+                  image_url: '123.com',
+                  video_url: '123.com',
+                  section_id: 1,
+                  position: '2.0',
+                },
+                {
+                  name: 'Hamburguesa King',
+                  description: 'Deliciosa hamburguesa de pollo con aros de cebolla y salsa buffalo',
+                  price: '120.0',
+                  rating: '4.0',
+                  image_url: '123.com',
+                  video_url: '123.com',
+                  section_id: 1,
+                  position: '1.0',
+                },
+              ],
+            },
+            {
+              title: 'Caldos ',
+              description: 'Caldos de la casa',
+              image_url: '123.com',
+              menu_id: 1,
+              page_number: '2.0',
+              products: [
+                {
+                  name: 'Caldo Tlalpeno',
+                  description: 'Nuestro tradicional y mas delicioso, lleva aguacate, queso',
+                  price: '100.0',
+                  rating: '4.0',
+                  image_url: '123.com',
+                  video_url: '123.com',
+                  section_id: 2,
+                  position: '2.0',
+                },
+                {
+                  name: 'Caldo de Res',
+                  description: 'Caldo inventado por la casa, lleva res y verduras',
+                  price: '100.0',
+                  rating: '5.0',
+                  image_url: '123.com',
+                  video_url: '123.com',
+                  section_id: 2,
+                  position: '1.0',
+                },
+              ],
+            },
+          ],
+        }
+      })
     }
-    this.setState({
-      menu: {
-        title: 'Los Castores: Platillos fuertes',
-        description: 'Extensa variedad de platillos fuertes ',
-        image_url: '123.com',
-        menu_color: '#dc1c1c',
-        text_color: '#ffffff',
-        rating_color: '#d1c340',
-        admin_user_id: 2,
-        sections: [
-          {
-            title: 'Hamburguesas de Pollo',
-            description: 'Hamburguesas hechas con carne de pollo',
-            image_url: '123.com',
-            menu_id: 1,
-            page_number: '1.0',
-            products: [
-              {
-                name: 'Boneless Burger',
-                description: 'Hamburguesa con pechuga de pollo banada en salsa boneless',
-                price: '120.0',
-                rating: '5.0',
-                image_url: '123.com',
-                video_url: '123.com',
-                section_id: 1,
-                position: '2.0',
-              },
-              {
-                name: 'Hamburguesa King',
-                description: 'Deliciosa hamburguesa de pollo con aros de cebolla y salsa buffalo',
-                price: '120.0',
-                rating: '4.0',
-                image_url: '123.com',
-                video_url: '123.com',
-                section_id: 1,
-                position: '1.0',
-              },
-            ],
-          },
-          {
-            title: 'Caldos ',
-            description: 'Caldos de la casa',
-            image_url: '123.com',
-            menu_id: 1,
-            page_number: '2.0',
-            products: [
-              {
-                name: 'Caldo Tlalpeno',
-                description: 'Nuestro tradicional y mas delicioso, lleva aguacate, queso',
-                price: '100.0',
-                rating: '4.0',
-                image_url: '123.com',
-                video_url: '123.com',
-                section_id: 2,
-                position: '2.0',
-              },
-              {
-                name: 'Caldo de Res',
-                description: 'Caldo inventado por la casa, lleva res y verduras',
-                price: '100.0',
-                rating: '5.0',
-                image_url: '123.com',
-                video_url: '123.com',
-                section_id: 2,
-                position: '1.0',
-              },
-            ],
-          },
-        ],
-      }
-    })
   }
 
   hexToRgbA(hex, opacity) {
