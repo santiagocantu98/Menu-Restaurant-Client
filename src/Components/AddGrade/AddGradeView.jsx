@@ -81,12 +81,12 @@ const AddGradeView = ({
         </Item>
         <Item
           name={['calification', 'waiter_id']}
-          label="Mesero"
+          label="Emleado"
           hasFeedback
           rules={[
             {
               required: true,
-              message: 'Favor de seleccionar el mesero quien lo atendio!',
+              message: 'Favor de seleccionar el Emleado quien lo atendio!',
             },
           ]}
         >

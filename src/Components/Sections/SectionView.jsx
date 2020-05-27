@@ -13,7 +13,44 @@ const sortProducts = (a, b) => {
   }
 };
 
-const SectionView = ({ section, text_color, product_color_inverse, rating_color }) => {
+const SectionView = ({
+  section = false,
+  text_color,
+  product_color_inverse,
+  rating_color,
+  waiters = false,
+}) => {
+  console.log(waiters)
+  if (waiters) {
+    return (
+      <div>
+        <h2
+          style={{
+            color: text_color,
+          }}
+          className="section">
+          Nuestro Equipo
+        </h2>
+        {(waiters && waiters.length > 0) ? waiters.map((waiter, i) => (
+          <Product
+            rating_color={rating_color}
+            text_color={text_color}
+            product_color_inverse={product_color_inverse}
+            position={i % 2}
+            waiter={waiter}
+          />
+        )) :
+          (<h2
+            style={{
+              color: text_color,
+            }}
+            className="section">
+            El restaurante no cuenta con empleados registrados.
+          </h2>)
+        }
+      </div>
+    );
+  }
   const {
     description,
     products,

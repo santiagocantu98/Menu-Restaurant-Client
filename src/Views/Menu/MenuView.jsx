@@ -33,15 +33,15 @@ class MenuView extends Component {
 
   getMenu = async () => {
     const { id } = this.props.match.params
-    fetch(`http://localhost:3001/api/menus/${id}`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }
-    })
-      .then(response => response.json())
-      .then(menu => this.setState({ menu })).catch(() => {
+    // fetch(`http://localhost:3001/api/menus/${id}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   }
+    // })
+    //   .then(response => response.json())
+    //   .then(menu => this.setState({ menu })).catch(() => {
         this.setState({
           menu: {
             title: 'Los Castores: Platillos fuertes',
@@ -51,24 +51,52 @@ class MenuView extends Component {
             text_color: '#ffffff',
             rating_color: '#d1c340',
             admin_user_id: 2,
+            califications: [],
             waiters: [
               {
                 id: 1,
                 image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
                 name: 'Santiago',
-                last_name: 'Cantu'
+                last_name: 'Cantu',
+                role: 'Employee',
+                califications: [
+                  {
+                    rating: 5,
+                  },
+                  {
+                    rating: 1.7,
+                  }
+                ]
               },
               {
                 id: 2,
                 image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
                 name: 'Juan',
-                last_name: 'Cantu'
+                last_name: 'Cantu',
+                role: 'Employee',
+                califications: [
+                  {
+                    rating: 5,
+                  },
+                  {
+                    rating: 1.7,
+                  }
+                ]
               },
               {
                 id: 3,
                 image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
                 name: 'Rafael',
-                last_name: 'Cantu'
+                last_name: 'Cantu',
+                role: 'Employee',
+                califications: [
+                  {
+                    rating: 5,
+                  },
+                  {
+                    rating: 1.7,
+                  }
+                ]
               },
             ],
             sections: [
@@ -84,12 +112,14 @@ class MenuView extends Component {
                     description: 'Hamburguesa con pechuga de pollo banada en salsa boneless',
                     price: '120.0',
                     rating: '5.0',
-                    media: [
+                    media_files: [
                       {
+                        position: 1,
                         type_media: 'video',
                         url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
                       },
                       {
+                        position: 2,
                         type_media: 'image',
                         url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
                       },
@@ -102,12 +132,14 @@ class MenuView extends Component {
                     description: 'Deliciosa hamburguesa de pollo con aros de cebolla y salsa buffalo',
                     price: '120.0',
                     rating: '4.0',
-                    media: [
+                    media_files: [
                       {
+                        position: 1,
                         type_media: 'video',
                         url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
                       },
                       {
+                        position: 1,
                         type_media: 'image',
                         url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
                       },
@@ -128,7 +160,7 @@ class MenuView extends Component {
             ],
           }
         })
-      });
+      // });
   }
 
   hexToRgbA(hex, opacity) {
@@ -193,12 +225,10 @@ class MenuView extends Component {
     } = this.state;
     const menuColor = this.hexToRgbA(menu_color, 0.5);
     const product_color_inverse = this.hexToRgbA(menu_color, 1);
-
+    document.body.style.background = menuColor;
     return (
       <div className="menu-container" style={{
         paddingTop: '2%',
-        backgroundColor: menuColor,
-        height: '100vh',
       }} >
         <AddComment
           visible={addCommentVisible}
@@ -248,17 +278,25 @@ class MenuView extends Component {
         <Tabs style={{
           color: text_color
         }} defaultActiveKey={tab} onChange={(e) => this.setState({ tab: e })}>
-          {sections.sort(this.sortSections).map((section, i) => {
-            return (
-              <TabPane tab={section.title} key={i}>
-                <Section
-                  rating_color={rating_color}
-                  product_color_inverse={product_color_inverse}
-                  text_color={text_color} section={section}
-                />
-              </TabPane>
-            )
-          })}
+            {sections.sort(this.sortSections).map((section, i) => {
+              return (
+                <TabPane tab={section.title} key={i}>
+                  <Section
+                    rating_color={rating_color}
+                    product_color_inverse={product_color_inverse}
+                    text_color={text_color} section={section}
+                  />
+                </TabPane>
+              )
+            })}
+            <TabPane tab="Equipo" key={sections.length}>
+              <Section
+                rating_color={rating_color}
+                product_color_inverse={product_color_inverse}
+                text_color={text_color}
+                waiters={waiters}
+              />
+            </TabPane>
         </Tabs>
       </div>
     )
