@@ -6,7 +6,7 @@ const ProductMedia = ({ media }) => {
   return (
     <Carousel>
       {(media && media.length > 0) ? media.map((mediaItem) => {
-        if (mediaItem.type === 'video') {
+        if (mediaItem.type_media === 'video') {
           return (
             <div>
               <ReactPlayer

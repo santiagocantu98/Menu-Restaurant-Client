@@ -42,89 +42,92 @@ class MenuView extends Component {
     })
       .then(response => response.json())
       .then(menu => this.setState({ menu })).catch(() => {
-        // this.setState({
-        //   menu: {
-        //     title: 'Los Castores: Platillos fuertes',
-        //     description: 'Extensa variedad de platillos fuertes ',
-        //     image_url: '123.com',
-        //     menu_color: '#dc1c1c',
-        //     text_color: '#ffffff',
-        //     rating_color: '#d1c340',
-        //     admin_user_id: 2,
-        //     waiters: [
-        //       {
-        //         id: 1,
-        //         name: 'Santiago',
-        //         last_name: 'Cantu'
-        //       },
-        //       {
-        //         id: 2,
-        //         name: 'Juan',
-        //         last_name: 'Cantu'
-        //       },
-        //       {
-        //         id: 3,
-        //         name: 'Rafael',
-        //         last_name: 'Cantu'
-        //       },
-        //     ],
-        //     sections: [
-        //       {
-        //         title: 'Hamburguesas de Pollo',
-        //         description: 'Hamburguesas hechas con carne de pollo',
-        //         image_url: '123.com',
-        //         menu_id: 1,
-        //         page_number: '1.0',
-        //         products: [
-        //           {
-        //             name: 'Boneless Burger',
-        //             description: 'Hamburguesa con pechuga de pollo banada en salsa boneless',
-        //             price: '120.0',
-        //             rating: '5.0',
-        //             media: [
-        //               {
-        //                 type: 'video',
-        //                 url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
-        //               },
-        //               {
-        //                 type: 'image',
-        //                 url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
-        //               },
-        //             ],
-        //             section_id: 1,
-        //             position: '2.0',
-        //           },
-        //           {
-        //             name: 'Hamburguesa King',
-        //             description: 'Deliciosa hamburguesa de pollo con aros de cebolla y salsa buffalo',
-        //             price: '120.0',
-        //             rating: '4.0',
-        //             media: [
-        //               {
-        //                 type: 'video',
-        //                 url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
-        //               },
-        //               {
-        //                 type: 'image',
-        //                 url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
-        //               },
-        //             ],
-        //             section_id: 1,
-        //             position: '1.0',
-        //           },
-        //         ],
-        //       },
-        //       {
-        //         title: 'Caldos ',
-        //         description: 'Caldos de la casa',
-        //         image_url: '123.com',
-        //         menu_id: 1,
-        //         page_number: '2.0',
-        //         products: [],
-        //       },
-        //     ],
-        //   }
-        // })
+        this.setState({
+          menu: {
+            title: 'Los Castores: Platillos fuertes',
+            description: 'Extensa variedad de platillos fuertes ',
+            image_url: '123.com',
+            menu_color: '#dc1c1c',
+            text_color: '#ffffff',
+            rating_color: '#d1c340',
+            admin_user_id: 2,
+            waiters: [
+              {
+                id: 1,
+                image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
+                name: 'Santiago',
+                last_name: 'Cantu'
+              },
+              {
+                id: 2,
+                image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
+                name: 'Juan',
+                last_name: 'Cantu'
+              },
+              {
+                id: 3,
+                image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
+                name: 'Rafael',
+                last_name: 'Cantu'
+              },
+            ],
+            sections: [
+              {
+                title: 'Hamburguesas de Pollo',
+                description: 'Hamburguesas hechas con carne de pollo',
+                image_url: '123.com',
+                menu_id: 1,
+                page_number: '1.0',
+                products: [
+                  {
+                    name: 'Boneless Burger',
+                    description: 'Hamburguesa con pechuga de pollo banada en salsa boneless',
+                    price: '120.0',
+                    rating: '5.0',
+                    media: [
+                      {
+                        type_media: 'video',
+                        url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
+                      },
+                      {
+                        type_media: 'image',
+                        url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
+                      },
+                    ],
+                    section_id: 1,
+                    position: '2.0',
+                  },
+                  {
+                    name: 'Hamburguesa King',
+                    description: 'Deliciosa hamburguesa de pollo con aros de cebolla y salsa buffalo',
+                    price: '120.0',
+                    rating: '4.0',
+                    media: [
+                      {
+                        type_media: 'video',
+                        url: 'https://www.youtube.com/watch?v=YR5YJ3qzIx4',
+                      },
+                      {
+                        type_media: 'image',
+                        url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
+                      },
+                    ],
+                    section_id: 1,
+                    position: '1.0',
+                  },
+                ],
+              },
+              {
+                title: 'Caldos ',
+                description: 'Caldos de la casa',
+                image_url: '123.com',
+                menu_id: 1,
+                page_number: '2.0',
+                products: [],
+              },
+            ],
+          }
+        })
       });
   }
 
