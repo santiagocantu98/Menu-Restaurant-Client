@@ -138,7 +138,7 @@ class MenuView extends Component {
                       {
                         position: 1,
                         type_media: 'image',
-                        url: 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/08/tacos-campechanos.jpg',
+                        url: 'https://www.chedraui.com.mx/medias/7501061696988-00-CH1200Wx1200H?context=bWFzdGVyfHJvb3R8MTcxMjk4fGltYWdlL2pwZWd8aDRmL2gxOC8xMDEzODgyMzE5NjcwMi5qcGd8M2NmZTE1MWM1MGI0MDc0N2RhODlmMjhlYjQ4MDY2YWM4NjkyMDI5ZGQ1NDNkZGNmODMwNzJlNDdlZjMyNzhmYw',
                       },
                     ],
                     section_id: 1,
