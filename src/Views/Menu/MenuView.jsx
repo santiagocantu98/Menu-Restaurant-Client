@@ -33,15 +33,15 @@ class MenuView extends Component {
 
   getMenu = async () => {
     const { id } = this.props.match.params
-    // fetch(`http://localhost:3001/api/menus/${id}`, {
-    //   method: 'GET',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   }
-    // })
-    //   .then(response => response.json())
-    //   .then(menu => this.setState({ menu })).catch(() => {
+    fetch(`http://localhost:3001/api/menus/${id}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(response => response.json())
+      .then(menu => this.setState({ menu })).catch(() => {
         this.setState({
           menu: {
             title: 'Los Castores: Platillos fuertes',
@@ -157,7 +157,7 @@ class MenuView extends Component {
             ],
           }
         })
-      // });
+      });
   }
 
   hexToRgbA(hex, opacity) {
@@ -275,25 +275,25 @@ class MenuView extends Component {
         <Tabs style={{
           color: text_color
         }} defaultActiveKey={tab} onChange={(e) => this.setState({ tab: e })}>
-            {sections.sort(this.sortSections).map((section, i) => {
-              return (
-                <TabPane tab={section.title} key={i}>
-                  <Section
-                    rating_color={rating_color}
-                    product_color_inverse={product_color_inverse}
-                    text_color={text_color} section={section}
-                  />
-                </TabPane>
-              )
-            })}
-            <TabPane tab="Equipo" key={sections.length}>
-              <Section
-                rating_color={rating_color}
-                product_color_inverse={product_color_inverse}
-                text_color={text_color}
-                waiters={waiters}
-              />
-            </TabPane>
+          {sections.sort(this.sortSections).map((section, i) => {
+            return (
+              <TabPane tab={section.title} key={i}>
+                <Section
+                  rating_color={rating_color}
+                  product_color_inverse={product_color_inverse}
+                  text_color={text_color} section={section}
+                />
+              </TabPane>
+            )
+          })}
+          <TabPane tab="Equipo" key={sections.length}>
+            <Section
+              rating_color={rating_color}
+              product_color_inverse={product_color_inverse}
+              text_color={text_color}
+              waiters={waiters}
+            />
+          </TabPane>
         </Tabs>
       </div>
     )

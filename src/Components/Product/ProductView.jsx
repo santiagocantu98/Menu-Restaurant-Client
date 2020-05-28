@@ -28,8 +28,8 @@ const ProductView = ({
           <Col xs={24} md={12}>
             <img
               className="product-img"
-              src={image_url}
-              alt={image_url}
+              src={image_url || 'https://happytravel.viajes/wp-content/uploads/2020/04/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'}
+              alt={image_url || 'https://happytravel.viajes/wp-content/uploads/2020/04/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'}
               style={{maxHeight: '360px'}}
             />
           </Col>
@@ -65,8 +65,8 @@ const ProductView = ({
               <Col xs={24} md={12}>
                 <img
                   className="product-img"
-                  src={image_url}
-                  alt={image_url}
+                  src={image_url || 'https://happytravel.viajes/wp-content/uploads/2020/04/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'}
+                  alt={image_url || 'https://happytravel.viajes/wp-content/uploads/2020/04/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'}
                   style={{maxHeight: '360px'}}
                 />
               </Col>
