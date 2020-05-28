@@ -92,7 +92,7 @@ const AddGradeView = ({
         >
           <Select placeholder="Mesero quien lo Atendio">
             {waiters.map((waiter) => (
-              <Option value={waiter.id}>{`${waiter.name} ${waiter.last_name}`}</Option>
+              <Option value={waiter.id}>{waiter.name}</Option>
             ))}
           </Select>
         </Item>

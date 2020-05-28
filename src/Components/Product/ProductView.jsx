@@ -18,7 +18,7 @@ const ProductView = ({
   waiter,
 }) => {
   if (waiter) {
-    const { name, last_name, role, image_url, califications } = waiter;
+    const { name, role, image_url, califications } = waiter;
 
     return (
       <Row type="flex" style={position && {
@@ -38,7 +38,7 @@ const ProductView = ({
               style={{
                 color: text_color,
               }}
-            >{`${name} ${last_name}`}</h2>
+            >{name}</h2>
             <h4
               style={{
                 color: text_color,
@@ -54,7 +54,7 @@ const ProductView = ({
                   style={{
                     color: text_color,
                   }}
-                >{`${name} ${last_name}`}</h2>
+                >{name}</h2>
                 <h4
                   style={{
                     color: text_color,

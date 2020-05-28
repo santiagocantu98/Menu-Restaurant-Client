@@ -57,7 +57,6 @@ class MenuView extends Component {
                 id: 1,
                 image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
                 name: 'Santiago',
-                last_name: 'Cantu',
                 role: 'Employee',
                 califications: [
                   {
@@ -72,7 +71,6 @@ class MenuView extends Component {
                 id: 2,
                 image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
                 name: 'Juan',
-                last_name: 'Cantu',
                 role: 'Employee',
                 califications: [
                   {
@@ -87,7 +85,6 @@ class MenuView extends Component {
                 id: 3,
                 image_url: 'https://pbs.twimg.com/profile_images/979971538781745153/p1b4wWIf_400x400.jpg',
                 name: 'Rafael',
-                last_name: 'Cantu',
                 role: 'Employee',
                 califications: [
                   {
